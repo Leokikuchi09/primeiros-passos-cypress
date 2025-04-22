@@ -16,11 +16,15 @@ describe('Orange HRM Test', () => {
     otherIdField: ":nth-child(3) > :nth-child(1) > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input",
     driverLicenceField: ":nth-child(2) > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-input",
     licenceExpireField: ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input",
-    nacionalityField: ":nth-child(5) > :nth-child(1) > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text-input",
-    maritalField: ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text-input",
+    nacionalityField: ":nth-child(5) > :nth-child(1) > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon",
+    maritalField: ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon",
     dateBirth: ":nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input",
     closeButton: ".--close",
-    saveButton: ":nth-child(1) > .oxd-form > .oxd-form-actions > .oxd-button"
+    nationButton: ".oxd-select-dropdown > :nth-child(6)",
+    marriedButton: ".oxd-select-dropdown > :nth-child(3)",
+    saveButton: ":nth-child(1) > .oxd-form > .oxd-form-actions > .oxd-button",
+    birthButton: ":nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input"
+   
 
 
 
@@ -42,7 +46,13 @@ describe('Orange HRM Test', () => {
     cy.get(selectorsList.driverLicenceField).clear().type('1011121314')
     cy.get(selectorsList.licenceExpireField).clear().type('2025-07-09')
     cy.get(selectorsList.closeButton).click()
+    cy.get(selectorsList.nacionalityField).click()
+    cy.get(selectorsList.nationButton).click()
+    cy.get(selectorsList.maritalField).click()
+    cy.get(selectorsList.marriedButton).click()
     cy.get(selectorsList.saveButton).click()
+    cy.get(selectorsList.birthButton).clear().type('1994-07-09')
+    cy.get(selectorsList.closeButton).click()
     cy.get('body').should('contain', 'Successfully Updated')
   
 
