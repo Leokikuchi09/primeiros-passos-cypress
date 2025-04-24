@@ -12,20 +12,24 @@ const menuPage = new MenuPage()
 const myInfoPage = new MyInfoPage()
 const loginFail = new LoginFail()
 
-describe('Orange HRM Test', () => {
+describe('Login Orange HRM Test', () => {
 
 
-  it('User Info Update - Success', () => {
-    loginPage.accessLoginPage()
-    loginPage.loginWithUser(userData.userSuccess.username, userData.userSuccess.password)
-    DashboardPage.checkDashboardPage()
-    menuPage.accessMyInfo()
-    myInfoPage.PersonalDetails('First Name', 'Last Name')
-    myInfoPage.EmployeeDetails('EmployId', 'OtherId', '10111213', '2025-10-07')
-    myInfoPage.status()
-    myInfoPage.saveForm()
+
+  it('Login - Fail', () => {
+    loginFail.accessLoginPage()
+    loginFail.loginWithUser(userData.userFail.username, userData.userFail.password)
+    loginFail.checkAccessInvalid()
+   
+    
+  })
+  it('Login - Success', () => {
+    loginFail.accessLoginPage()
+    loginFail.loginWithUser(userData.userSuccess.username, userData.userSuccess.password)
+    dashboardPage.checkDashboardPage()
+   
+    
   })
 
-  
 
 })
